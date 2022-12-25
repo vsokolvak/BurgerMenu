@@ -127,7 +127,7 @@ body{
 
 .sponsor {
     @include flex();
-    gap: 50px;
+    gap: 30px;
     margin-bottom: 30px;
 
     // .sponsor__logo
@@ -135,7 +135,7 @@ body{
     &__logo {
         display: block;
         img {
-            width: 70px;
+            width: 50px;
         }
     }
 }

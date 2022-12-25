@@ -169,14 +169,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
   margin-bottom: 30px;
 }
 .sponsor__logo {
   display: block;
 }
 .sponsor__logo img {
-  width: 70px;
+  width: 50px;
 }
 
 .contact {
