@@ -1,0 +1,224 @@
+// /*include reset style*/
+@import "nullstyle";
+
+//page mixin
+@mixin flex() { // @include flex();
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//page constant
+$pagecolor: rgba(95, 63, 255, 0.919);
+$txtcolor: rgb(4, 3, 3);
+
+//page animation
+
+// page style
+body{
+    color: $txtcolor;
+    font-size: 20px;
+    position: relative;
+}
+
+.pageheader {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    height: 100px;
+    background-color: $pagecolor;
+    @include flex();
+    // .pageheader__content
+
+    &__content {
+        @include flex();
+        width: 100%;
+        margin: auto;
+        padding:0 100px;
+        justify-content: space-between;
+    }
+
+    // .pageheader__logo
+
+    &__logo {
+
+        img {
+            display: block;
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    // .pageheader__menu
+
+    &__menu {
+        @include flex();
+        gap: 20px;
+        
+    }
+
+    // .pageheader__link
+
+    &__link {
+        a {
+            color: $txtcolor;
+            display: block;
+            transition: all 0.1s linear;
+            font-size: 30px;
+            &:hover {
+                color: lighten($color: $txtcolor, $amount: 20%);
+                transform: scale(105%);
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.pagebody {
+    max-width: 1200px;
+    margin: 100px auto 0;
+    padding: 0 30px;
+    @include flex();
+    flex-direction: column;
+    gap: 30px;
+    // .pagebody__title
+
+    &__title {
+        text-align: center;
+        font-size: 50px;
+        margin: 30px;
+    }
+}
+
+.pagecontent {
+    @include flex();
+    gap: 30px;
+    align-items: flex-start;
+
+    // .pagecontent__img
+
+    &__img {
+        display: block;
+        img {
+            width: 350px;
+        }
+    }
+
+    // .pagecontent__text
+
+    &__text {
+        font-size: 25px;
+        word-spacing: 5px;
+    }
+}
+
+.pagefooter {
+    max-width: 1200px;
+    margin: 0 auto;
+    @include flex();
+    flex-direction: column;
+    background-color: $pagecolor;
+    padding: 30px;
+}
+
+.sponsor {
+    @include flex();
+    gap: 50px;
+    margin-bottom: 30px;
+
+    // .sponsor__logo
+
+    &__logo {
+        display: block;
+        img {
+            width: 70px;
+        }
+    }
+}
+
+.contact {
+    @include flex();
+    gap: 50px;
+}
+
+@media (max-width: 780px) {
+    .pageheader {
+    
+        &__menuicon {
+            width: 50px;
+            height: 50px;
+            border-top: none;
+            border-bottom: none;
+            position: relative;
+            &::before, &::after{
+                content: '';
+                display: block;
+                width: 100%;
+                height: 4px;
+                background-color: rgb(255, 253, 253);
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: rotateZ(45deg);
+                transition: transform 0.5s linear;
+            }
+            &::before {
+                transform:rotateZ(-45deg);
+            }
+        }
+
+        &__menuicon.close{
+            border-top: 4px solid rgb(255, 253, 253);
+            border-bottom: 4px solid rgb(255, 253, 253);
+            &::before,
+            &::after {
+                transform: rotateZ(0);
+            }
+        }
+        // .pageheader__nav
+
+        &__nav {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            left: 0;
+            top: 100px;
+            background-color: $pagecolor;
+            transition: transform 0.5s linear;
+        }
+
+        &__nav.close {
+            transform: translateY(-120%);
+        }
+
+        // .pageheader__menu
+
+        &__menu {
+            flex-direction: column;
+        }
+
+        // .pageheader__link
+
+        &__link {
+            margin-top: 30px;
+            border: 2px solid $txtcolor;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+    }
+
+    .pagebody{
+        .pagecontent{
+            flex-direction: column;
+            align-items: center;
+            &__text {
+                text-align: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,248 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+body {
+  color: rgb(4, 3, 3);
+  font-size: 20px;
+  position: relative;
+}
+
+.pageheader {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100px;
+  background-color: rgba(95, 63, 255, 0.919);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pageheader__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  padding: 0 100px;
+  justify-content: space-between;
+}
+.pageheader__logo img {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+.pageheader__menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.pageheader__link a {
+  color: rgb(4, 3, 3);
+  display: block;
+  transition: all 0.1s linear;
+  font-size: 30px;
+}
+.pageheader__link a:hover {
+  color: #3e2f2f;
+  transform: scale(105%);
+  font-weight: 500;
+}
+
+.pagebody {
+  max-width: 1200px;
+  margin: 100px auto 0;
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+.pagebody__title {
+  text-align: center;
+  font-size: 50px;
+  margin: 30px;
+}
+
+.pagecontent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  align-items: flex-start;
+}
+.pagecontent__img {
+  display: block;
+}
+.pagecontent__img img {
+  width: 350px;
+}
+.pagecontent__text {
+  font-size: 25px;
+  word-spacing: 5px;
+}
+
+.pagefooter {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(95, 63, 255, 0.919);
+  padding: 30px;
+}
+
+.sponsor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 30px;
+}
+.sponsor__logo {
+  display: block;
+}
+.sponsor__logo img {
+  width: 70px;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+@media (max-width: 780px) {
+  .pageheader__menuicon {
+    width: 50px;
+    height: 50px;
+    border-top: none;
+    border-bottom: none;
+    position: relative;
+  }
+  .pageheader__menuicon::before, .pageheader__menuicon::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: rgb(255, 253, 253);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: rotateZ(45deg);
+    transition: transform 0.5s linear;
+  }
+  .pageheader__menuicon::before {
+    transform: rotateZ(-45deg);
+  }
+  .pageheader__menuicon.close {
+    border-top: 4px solid rgb(255, 253, 253);
+    border-bottom: 4px solid rgb(255, 253, 253);
+  }
+  .pageheader__menuicon.close::before, .pageheader__menuicon.close::after {
+    transform: rotateZ(0);
+  }
+  .pageheader__nav {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 100px;
+    background-color: rgba(95, 63, 255, 0.919);
+    transition: transform 0.5s linear;
+  }
+  .pageheader__nav.close {
+    transform: translateY(-120%);
+  }
+  .pageheader__menu {
+    flex-direction: column;
+  }
+  .pageheader__link {
+    margin-top: 30px;
+    border: 2px solid rgb(4, 3, 3);
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+  .pagebody .pagecontent {
+    flex-direction: column;
+    align-items: center;
+  }
+  .pagebody .pagecontent__text {
+    text-align: center;
+  }
+}
