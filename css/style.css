@@ -245,4 +245,7 @@ body {
   .pagebody .pagecontent__text {
     text-align: center;
   }
+  .contact {
+    flex-direction: column;
+  }
 }
