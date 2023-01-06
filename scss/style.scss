@@ -13,6 +13,17 @@ $pagecolor: rgb(122, 96, 249);
 $txtcolor: rgb(4, 3, 3);
 
 //page animation
+@keyframes waves {
+    0% {
+        transform: translate3d(-50%, -98%, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(-50%, -96%, 0) rotate(180deg);
+    }
+    100% {
+        transform: translate3d(-50%, -98%, 0) rotate(360deg);
+    }
+}
 
 // page style
 body{
@@ -81,7 +92,7 @@ body{
 .pagebody {
     max-width: 1200px;
     margin: 100px auto 0;
-    padding: 0 30px;
+    padding: 30px;
     @include flex();
     flex-direction: column;
     gap: 30px;
@@ -98,6 +109,53 @@ body{
     @include flex();
     gap: 30px;
     align-items: flex-start;
+
+    // buttonocean
+    .buttonocean {
+        background-color: aqua;
+        border-radius: 20px;
+        position: relative;
+        @include flex();
+        overflow: hidden;
+        width: 350px;
+        height: 100px;
+        flex-shrink: 0;
+
+            // befor and after effect hvyli
+            &::before, &::after {
+                content: "";
+                display: block;
+                background-color: rgb(255, 255, 255);
+                position: absolute;
+                width: 400%;
+                padding-top: 400%;
+                border-radius: 47%;
+                top: 0;
+                left: 50%;
+                z-index: 2;
+                animation: waves 10s infinite linear ;
+                transition: top 3s linear;
+            }
+            &::after {
+                animation: waves 13s infinite linear;
+                border-radius: 44%;
+                background-color: rgb(177, 250, 250);
+                z-index: 1;
+            }
+
+            &:hover::before, &:hover::after {
+                top: -80%;
+            }
+    
+            // .buttonocean__text
+            &__text {
+                position: relative;
+                z-index: 10;
+                font-size: 50px;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+            }
+        }
 
     // .pagecontent__img
 
@@ -154,6 +212,7 @@ body{
             border-top: none;
             border-bottom: none;
             position: relative;
+            z-index: 1;
             &::before, &::after{
                 content: '';
                 display: block;
@@ -184,11 +243,11 @@ body{
         &__nav {
             position: absolute;
             width: 100%;
-            height: 100vh;
             left: 0;
             top: 100px;
             background-color: $pagecolor;
             transition: transform 0.5s linear;
+            overflow: scroll;
         }
 
         &__nav.close {

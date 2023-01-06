@@ -68,6 +68,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------*/
+@-webkit-keyframes waves {
+  0% {
+    transform: translate3d(-50%, -98%, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-50%, -96%, 0) rotate(180deg);
+  }
+  100% {
+    transform: translate3d(-50%, -98%, 0) rotate(360deg);
+  }
+}
+@keyframes waves {
+  0% {
+    transform: translate3d(-50%, -98%, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-50%, -96%, 0) rotate(180deg);
+  }
+  100% {
+    transform: translate3d(-50%, -98%, 0) rotate(360deg);
+  }
+}
 body {
   color: rgb(4, 3, 3);
   font-size: 20px;
@@ -123,7 +145,7 @@ body {
 .pagebody {
   max-width: 1200px;
   margin: 100px auto 0;
-  padding: 0 30px;
+  padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,6 +164,50 @@ body {
   align-items: center;
   gap: 30px;
   align-items: flex-start;
+}
+.pagecontent .buttonocean {
+  background-color: aqua;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 350px;
+  height: 100px;
+  flex-shrink: 0;
+}
+.pagecontent .buttonocean::before, .pagecontent .buttonocean::after {
+  content: "";
+  display: block;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  width: 400%;
+  padding-top: 400%;
+  border-radius: 47%;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  -webkit-animation: waves 10s infinite linear;
+          animation: waves 10s infinite linear;
+  transition: top 3s linear;
+}
+.pagecontent .buttonocean::after {
+  -webkit-animation: waves 13s infinite linear;
+          animation: waves 13s infinite linear;
+  border-radius: 44%;
+  background-color: rgb(177, 250, 250);
+  z-index: 1;
+}
+.pagecontent .buttonocean:hover::before, .pagecontent .buttonocean:hover::after {
+  top: -80%;
+}
+.pagecontent .buttonocean__text {
+  position: relative;
+  z-index: 10;
+  font-size: 50px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
 .pagecontent__img {
   display: block;
@@ -193,6 +259,7 @@ body {
     border-top: none;
     border-bottom: none;
     position: relative;
+    z-index: 1;
   }
   .pageheader__menuicon::before, .pageheader__menuicon::after {
     content: "";
@@ -219,11 +286,11 @@ body {
   .pageheader__nav {
     position: absolute;
     width: 100%;
-    height: 100vh;
     left: 0;
     top: 100px;
     background-color: rgb(122, 96, 249);
     transition: transform 0.5s linear;
+    overflow: scroll;
   }
   .pageheader__nav.close {
     transform: translateY(-120%);
