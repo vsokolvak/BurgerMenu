@@ -98,6 +98,7 @@ body {
 
 .pageheader {
   position: fixed;
+  z-index: 100;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -193,8 +194,8 @@ body {
   transition: top 3s linear;
 }
 .pagecontent .buttonocean::after {
-  -webkit-animation: waves 13s infinite linear;
-          animation: waves 13s infinite linear;
+  -webkit-animation: waves 15s infinite linear;
+          animation: waves 15s infinite linear;
   border-radius: 44%;
   background-color: rgb(177, 250, 250);
   z-index: 1;
@@ -290,7 +291,6 @@ body {
     top: 100px;
     background-color: rgb(122, 96, 249);
     transition: transform 0.5s linear;
-    overflow: scroll;
   }
   .pageheader__nav.close {
     transform: translateY(-120%);
