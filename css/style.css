@@ -90,6 +90,28 @@ h1, h2, h3, h4, h5, h6 {
     transform: translate3d(-50%, -98%, 0) rotate(360deg);
   }
 }
+@-webkit-keyframes butlockeffect {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes butlockeffect {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 body {
   color: rgb(4, 3, 3);
   font-size: 20px;
@@ -210,6 +232,72 @@ body {
   text-transform: uppercase;
   letter-spacing: 5px;
 }
+.pagecontent .buttonlock {
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 100px;
+  flex-shrink: 0;
+  margin: 70px auto;
+}
+.pagecontent .buttonlock::before, .pagecontent .buttonlock::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(6, 147, 171);
+  border-radius: 20px 0 0 20px;
+}
+.pagecontent .buttonlock::before {
+  border-radius: 20px 0 0 20px;
+}
+.pagecontent .buttonlock::after {
+  border-radius: 0 20px 20px 0;
+  left: 50%;
+}
+.pagecontent .buttonlock:hover .buttonlock__effect {
+  left: 100%;
+  opacity: 0;
+  z-index: 0;
+}
+.pagecontent .buttonlock__effect {
+  position: absolute;
+  top: -50px;
+  left: 50px;
+  transition: all 1s ease-out;
+  width: 200px;
+  height: 200px;
+  border: 5px solid rgb(229, 100, 8);
+  -webkit-animation: butlockeffect 8s infinite linear;
+          animation: butlockeffect 8s infinite linear;
+}
+.pagecontent .buttonlock__effect::before, .pagecontent .buttonlock__effect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  border: 5px solid rgb(229, 100, 8);
+  -webkit-animation: butlockeffect 5s infinite linear;
+          animation: butlockeffect 5s infinite linear;
+}
+.pagecontent .buttonlock__effect::after {
+  -webkit-animation-duration: 7s;
+          animation-duration: 7s;
+}
+.pagecontent .buttonlock__text {
+  position: relative;
+  z-index: 10;
+  font-size: 50px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
 .pagecontent__img {
   display: block;
 }
@@ -217,8 +305,11 @@ body {
   width: 350px;
 }
 .pagecontent__text {
+  position: relative;
+  z-index: 10;
   font-size: 25px;
   word-spacing: 5px;
+  align-self: center;
 }
 
 .pagefooter {

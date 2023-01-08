@@ -9,4 +9,12 @@ function openMenu(){
         buttonMenu[0].classList.toggle('close');
     });
 }
+
+// function scrollmenu 
+function scrollmenu() {
+    const content = document.getElementsByClassName("pagecontent");
+    console.log(content);
+}
+
 openMenu();
+scrollmenu();
