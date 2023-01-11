@@ -19,6 +19,7 @@ function scrollmenu() {
     let curentitem = 2;
     let scrollcount = 200;
     let c = 1;
+    let activeHeight = 300;
 
     // calculate and sat height body
     const bodycontent = document.getElementsByClassName("content");
@@ -57,18 +58,18 @@ function scrollmenu() {
             addstyle(itemNumberNext);
         }
     }
-    togleStyle(curentitem, 200, 1, 20, c);
+    togleStyle(curentitem, activeHeight, 1, 20, c);
 
     window.addEventListener('scroll', function(event) {
             let pageScroll = this.scrollY;
             if (pageScroll/scrollcount+1 > curentitem) {
                 if (curentitem < count) curentitem += 1;
-                togleStyle(curentitem, 200, 1, 20, c);
+                togleStyle(curentitem, activeHeight, 1, 20, c);
             }
             // curentitem +=1;
             if (pageScroll/scrollcount+1 < curentitem) {
                 if (curentitem > 2) curentitem -= 1;
-                togleStyle(curentitem, 200, 1, 20, c);
+                togleStyle(curentitem, activeHeight, 1, 20, c);
             }
     });
 }

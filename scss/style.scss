@@ -256,8 +256,10 @@ body{
 
     &__img {
         display: block;
+        height: 100%;
         img {
-            width: 350px;
+            display: block;
+            height: 100%;
         }
     }
 
@@ -308,7 +310,7 @@ body{
 
 @media (max-width: 780px) {
     .pageheader {
-    
+    height: 70px;
         &__menuicon {
             width: 50px;
             height: 50px;
@@ -347,9 +349,10 @@ body{
             position: absolute;
             width: 100%;
             left: 0;
-            top: 100px;
+            top: 70px;
             background-color: $pagecolor;
             transition: transform 0.5s linear;
+            height: calc(100vh - 70px);
         }
 
         &__nav.close {
@@ -365,11 +368,14 @@ body{
         // .pageheader__link
 
         &__link {
-            margin-top: 30px;
+            margin-top: 10px;
             border: 2px solid $txtcolor;
             width: 100%;
-            padding: 20px;
+            padding: 10px;
             text-align: center;
+            a{
+                font-size: 20px;
+            }
         }
     }
 
@@ -382,8 +388,122 @@ body{
             }
         }
     }
+    .pagecontent {
+        @include flex();
+        gap: 10px;
+        transition: all 1s ease-in-out;
+        flex-direction: column;
+        align-items: center;
 
-.contact{
-    flex-direction: column;
-}
+        // buttonocean
+        .buttonocean {
+            width: 250px;
+            height: 70px;
+
+            // .buttonocean__text
+            &__text {
+                font-size: 30px;
+                letter-spacing: 5px;
+            }
+        }
+
+        // buttonlock
+        .buttonlock {
+            width: 250px;
+            height: 70px;
+            margin: 50px auto;
+
+            &::before,
+            &::after {
+                width: 52%;
+            }
+
+            // effect
+            &__effect {
+                position: absolute;
+                top: -30%;
+                left: 20%;
+                transition: all 1s ease-out;
+                width: 120px;
+                height: 120px;
+                border: 5px solid rgb(229, 100, 8);
+                animation: butlockeffect 8s infinite linear;
+
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 120px;
+                    height: 120px;
+                    border: 5px solid rgb(229, 100, 8);
+                    animation: butlockeffect 5s infinite linear;
+                }
+
+                &::after {
+                    animation-duration: 7s;
+                }
+            }
+
+            // .buttonocean__text
+            &__text {
+                position: relative;
+                z-index: 10;
+                font-size: 30px;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+            }
+        }
+
+        // .pagecontent__img
+
+        &__img {
+            display: block;
+            height: 100%;
+
+            img {
+                display: block;
+                height: 100%;
+            }
+        }
+
+        // .pagecontent__text
+
+        &__text {
+            position: relative;
+            z-index: 10;
+            font-size: 18px;
+            word-spacing: 3px;
+            align-self: center;
+        }
+    }
+
+    .pagefooter {
+        padding: 10px;
+    }
+
+    .sponsor {
+        margin-bottom: 10px;
+        // .sponsor__info
+
+        &__info {}
+
+        // .sponsor__logo
+
+        &__logo {}
+    }
+
+    .contact {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 16px;
+        // .contact__email
+
+        &__email {}
+
+        // .contact__tell
+
+        &__tell {}
+    }
 }

@@ -308,9 +308,11 @@ body {
 }
 .pagecontent__img {
   display: block;
+  height: 100%;
 }
 .pagecontent__img img {
-  width: 350px;
+  display: block;
+  height: 100%;
 }
 .pagecontent__text {
   position: relative;
@@ -358,6 +360,9 @@ body {
 }
 
 @media (max-width: 780px) {
+  .pageheader {
+    height: 70px;
+  }
   .pageheader__menuicon {
     width: 50px;
     height: 50px;
@@ -392,9 +397,10 @@ body {
     position: absolute;
     width: 100%;
     left: 0;
-    top: 100px;
+    top: 70px;
     background-color: rgb(122, 96, 249);
     transition: transform 0.5s linear;
+    height: calc(100vh - 70px);
   }
   .pageheader__nav.close {
     transform: translateY(-120%);
@@ -403,11 +409,14 @@ body {
     flex-direction: column;
   }
   .pageheader__link {
-    margin-top: 30px;
+    margin-top: 10px;
     border: 2px solid rgb(4, 3, 3);
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
+  }
+  .pageheader__link a {
+    font-size: 20px;
   }
   .pagebody .pagecontent {
     flex-direction: column;
@@ -416,7 +425,88 @@ body {
   .pagebody .pagecontent__text {
     text-align: center;
   }
+  .pagecontent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 1s ease-in-out;
+    flex-direction: column;
+    align-items: center;
+  }
+  .pagecontent .buttonocean {
+    width: 250px;
+    height: 70px;
+  }
+  .pagecontent .buttonocean__text {
+    font-size: 30px;
+    letter-spacing: 5px;
+  }
+  .pagecontent .buttonlock {
+    width: 250px;
+    height: 70px;
+    margin: 50px auto;
+  }
+  .pagecontent .buttonlock::before, .pagecontent .buttonlock::after {
+    width: 52%;
+  }
+  .pagecontent .buttonlock__effect {
+    position: absolute;
+    top: -30%;
+    left: 20%;
+    transition: all 1s ease-out;
+    width: 120px;
+    height: 120px;
+    border: 5px solid rgb(229, 100, 8);
+    -webkit-animation: butlockeffect 8s infinite linear;
+            animation: butlockeffect 8s infinite linear;
+  }
+  .pagecontent .buttonlock__effect::before, .pagecontent .buttonlock__effect::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    border: 5px solid rgb(229, 100, 8);
+    -webkit-animation: butlockeffect 5s infinite linear;
+            animation: butlockeffect 5s infinite linear;
+  }
+  .pagecontent .buttonlock__effect::after {
+    -webkit-animation-duration: 7s;
+            animation-duration: 7s;
+  }
+  .pagecontent .buttonlock__text {
+    position: relative;
+    z-index: 10;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+  .pagecontent__img {
+    display: block;
+    height: 100%;
+  }
+  .pagecontent__img img {
+    display: block;
+    height: 100%;
+  }
+  .pagecontent__text {
+    position: relative;
+    z-index: 10;
+    font-size: 18px;
+    word-spacing: 3px;
+    align-self: center;
+  }
+  .pagefooter {
+    padding: 10px;
+  }
+  .sponsor {
+    margin-bottom: 10px;
+  }
   .contact {
     flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
   }
 }
