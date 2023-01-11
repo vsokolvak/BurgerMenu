@@ -17,53 +17,59 @@ function scrollmenu() {
     const count = content.length-3;
     console.log(count);
     let curentitem = 2;
+    let scrollcount = 200;
+    let c = 1;
 
     // calculate and sat height body
     const bodycontent = document.getElementsByClassName("content");
     console.log(window.innerHeight);
-    console.log(count*200+window.innerHeight + "px");
-    bodycontent[0].style.height = (count*200+window.innerHeight + "px");
+    console.log(count*scrollcount+window.innerHeight + "px");
+    bodycontent[0].style.height = (count*scrollcount+window.innerHeight + "px");
 
-    function addstyle(itemnumber) {
-        content[itemnumber].style.height = "auto";
-        content[itemnumber].style.transform = "scale(1)";
-        content[itemnumber].style.padding = "20px 0";
-        // content[itemnumber].style.display = "flex";
+    function togleStyle(itemnumber, height, scale, padding, count) {
+        const coef = 0.5;
+        let itemNumberPrew;
+        let itemNumberNext;
+        let i = 1;
 
-        content[itemnumber].previousElementSibling.style.transform = "scale(0.5)";
-        content[itemnumber].previousElementSibling.style.height = "100px";
-        // content[itemnumber].previousElementSibling.style.display = "flex";
+        function addstyle(itemnumber){
+            content[itemnumber].style.height = `${height}px`;
+            content[itemnumber].style.transform = `scale(${scale})`;
+            content[itemnumber].style.padding = `${padding}px 0`;
+            content[itemnumber].style.overflow = "hidden";
+        }
 
-        content[itemnumber].previousElementSibling.previousElementSibling.style.transform = "scale(0)";
-        content[itemnumber].previousElementSibling.previousElementSibling.style.height = "0px";
-        content[itemnumber].previousElementSibling.previousElementSibling.style.padding = "0"
-        // content[itemnumber].previousElementSibling.previousElementSibling.style.display = "none";
-
-        content[itemnumber].nextElementSibling.style.transform = "scale(0.5)";
-        content[itemnumber].nextElementSibling.style.height = "100px";
-        // content[itemnumber].nextElementSibling.style.display = "flex";
-
-        content[itemnumber].nextElementSibling.nextElementSibling.style.transform = "scale(0)";
-        content[itemnumber].nextElementSibling.nextElementSibling.style.height = "0px";
-        content[itemnumber].nextElementSibling.nextElementSibling.style.padding = "0";
-        // content[itemnumber].nextElementSibling.nextElementSibling.style.display = "none";
+        addstyle(itemnumber);
+        
+        for (;count >= 0;) {
+            itemNumberPrew = curentitem - i;
+            itemNumberNext = curentitem + i;
+            height = height * coef;
+            padding = padding * coef;
+            if (count == 0) {
+                height = '0';
+                padding = '0';
+            };
+            scale = scale * coef;
+            count--;
+            i++;
+            addstyle(itemNumberPrew);
+            addstyle(itemNumberNext);
+        }
     }
-    addstyle(curentitem);
+    togleStyle(curentitem, 200, 1, 20, c);
 
     window.addEventListener('scroll', function(event) {
             let pageScroll = this.scrollY;
-            if (pageScroll/200+1 > curentitem) {
+            if (pageScroll/scrollcount+1 > curentitem) {
                 if (curentitem < count) curentitem += 1;
+                togleStyle(curentitem, 200, 1, 20, c);
             }
             // curentitem +=1;
-            if (pageScroll/200+1 < curentitem) {
+            if (pageScroll/scrollcount+1 < curentitem) {
                 if (curentitem > 2) curentitem -= 1;
+                togleStyle(curentitem, 200, 1, 20, c);
             }
-
-            // console.log(curentitem);
-            // console.log("scroll")
-            // console.log(pageScroll);
-            addstyle(curentitem);
     });
 }
 
