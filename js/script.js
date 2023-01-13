@@ -14,11 +14,11 @@ function openMenu(){
 function scrollmenu() {
     const content = document.getElementsByClassName("pagecontent");
     console.log(content);
-    const count = content.length-3;
+    const count = content.length-4;
     console.log(count);
-    let curentitem = 2;
+    let curentitem = 3;
     let scrollcount = 200;
-    let c = 1;
+    let c = 2;
     let activeHeight = 300;
 
     // calculate and sat height body
@@ -43,6 +43,7 @@ function scrollmenu() {
         addstyle(itemnumber);
         
         for (;count >= 0;) {
+            console.log(i);
             itemNumberPrew = curentitem - i;
             itemNumberNext = curentitem + i;
             height = height * coef;
@@ -63,13 +64,17 @@ function scrollmenu() {
     window.addEventListener('scroll', function(event) {
             let pageScroll = this.scrollY;
             if (pageScroll/scrollcount+1 > curentitem) {
-                if (curentitem < count) curentitem += 1;
-                togleStyle(curentitem, activeHeight, 1, 20, c);
+                if (curentitem < count) {
+                    curentitem += 1; 
+                    togleStyle(curentitem, activeHeight, 1, 20, c);
+                }
             }
             // curentitem +=1;
             if (pageScroll/scrollcount+1 < curentitem) {
-                if (curentitem > 2) curentitem -= 1;
-                togleStyle(curentitem, activeHeight, 1, 20, c);
+                if (curentitem > 3) { 
+                    curentitem -= 1;
+                    togleStyle(curentitem, activeHeight, 1, 20, c);
+                }
             }
     });
 }
